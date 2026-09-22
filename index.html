@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#140f14">
-<meta name="description" content="Sophia Pattekari — MERN Stack Developer portfolio, Pune, India.">
-<title>Sophia Pattekari — MERN Stack Developer</title>
+<meta name="description" id="metaDesc" content="Sophia Pattekari — MERN Stack Developer portfolio, Pune, India.">
+<title id="pageTitle">Sophia Pattekari — MERN Stack Developer</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23140f14' stroke='%23c98ea3' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='5' fill='none' stroke='%23e8a020' stroke-width='1.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -186,12 +186,31 @@ a { color: inherit; }
 .track-mark:hover .mark-n { color: var(--amber); }
 .scrubber-brand-right { flex: 0 0 auto; font-family: var(--mono); font-size: 0.62rem; color: var(--ash); letter-spacing: 0.18em; }
 
+/* ─── MODE SWITCH (Full-Stack / QA) ──────────────────── */
+.mode-switch {
+  flex: 0 0 auto; display: flex; align-items: center; gap: 0;
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px;
+  background: rgba(0,0,0,0.18);
+  font-family: var(--mono);
+}
+.mode-btn {
+  appearance: none; border: none; background: none; cursor: pointer;
+  color: var(--ash); font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.35rem 0.7rem; border-radius: 999px; transition: color 0.2s, background 0.2s;
+}
+.mode-btn:hover { color: var(--paper); }
+.mode-btn.active { background: var(--amber); color: var(--void); font-weight: 500; }
+body[data-mode="fs"] .qa-only { display: none !important; }
+body[data-mode="qa"] .fs-only { display: none !important; }
+
 @media (max-width: 720px) {
   :root { --hdr-h: 52px; }
   .mark-l { display: none; }
   .scrubber-track { max-width: none; }
   .scrubber-brand-right { display: none; }
   .scrubber { padding: 0 0.9rem; gap: 0.6rem; }
+  .mode-btn { padding: 0.3rem 0.5rem; font-size: 0.56rem; }
 }
 @media (max-width: 480px) {
   .scrubber-time { display: none; }
@@ -350,6 +369,29 @@ section { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
 .stat-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 900; font-style: italic; color: var(--amber); line-height: 1; }
 .stat-text-label { font-family: var(--mono); font-size: 0.68rem; color: var(--ash); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; }
 
+/* ─── EXPERIENCE ───────────────────────────────────────── */
+.exp-card {
+  background: var(--panel); border: 1px solid var(--line); border-left: 2px solid var(--signal);
+  padding: 2rem 2.25rem;
+}
+.exp-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line);
+}
+.exp-role { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--paper); }
+.exp-company { font-family: var(--mono); font-size: 0.75rem; color: var(--amber); letter-spacing: 0.04em; margin-top: 0.3rem; }
+.exp-date { font-family: var(--mono); font-size: 0.68rem; color: var(--ash); letter-spacing: 0.1em; white-space: nowrap; }
+.exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+.exp-list li {
+  position: relative; padding-left: 1.35rem; font-size: 0.95rem; line-height: 1.65; color: var(--ink);
+}
+.exp-list li::before {
+  content: '▸'; position: absolute; left: 0; top: 0; color: var(--signal); font-size: 0.8rem;
+}
+@media (max-width: 720px) {
+  .exp-card { padding: 1.5rem 1.5rem; }
+}
+
 /* ─── PROJECTS ─────────────────────────────────────────── */
 .projects-stack { display: flex; flex-direction: column; gap: 1.25rem; }
 
@@ -421,6 +463,40 @@ section { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
 .tech-tag.hi { color: var(--amber); border-color: rgba(201,142,163,0.28); background: var(--amber-dim); }
 
 /* ─── SKILLS ───────────────────────────────────────────── */
+/* ─── SKILL CONSTELLATION ──────────────────────────────── */
+.constellation-wrap {
+  background: var(--panel); border: 1px solid var(--line);
+  padding: 1.75rem 1.5rem 1.25rem; margin-bottom: 1.75rem;
+  position: relative;
+}
+.constellation-caption {
+  font-family: var(--mono); font-size: 0.72rem; color: var(--ash);
+  letter-spacing: 0.04em; text-align: center; margin-bottom: 0.5rem;
+}
+#constellationSvg { width: 100%; height: auto; display: block; max-height: 560px; }
+.const-line { stroke: rgba(201,142,163,0.28); stroke-width: 1.2; transition: opacity 0.25s, stroke 0.25s, stroke-width 0.25s; }
+.const-line.active { stroke: var(--signal); stroke-width: 2.2; filter: drop-shadow(0 0 4px rgba(207,164,108,0.55)); }
+.const-line.dim { opacity: 0.08; }
+.const-node { cursor: pointer; transition: opacity 0.25s; }
+.const-node.dim { opacity: 0.22; }
+.const-node circle { transition: r 0.2s, stroke 0.2s, stroke-width 0.2s; }
+.const-node.skill circle { fill: var(--amber); }
+.const-node.project circle { fill: var(--signal); }
+.const-node.active circle { stroke: var(--paper); stroke-width: 2; }
+.const-node text { font-family: var(--mono); pointer-events: none; }
+.const-node.skill text { fill: var(--ink); font-size: 12px; }
+.const-node.project text { fill: var(--paper); font-size: 14px; font-weight: 700; }
+.const-node:hover circle { stroke: var(--paper); stroke-width: 1.5; }
+.const-node:focus-visible circle { outline: none; stroke: var(--signal); stroke-width: 2.5; }
+.constellation-hint {
+  font-family: var(--mono); font-size: 0.78rem; color: var(--signal);
+  text-align: center; min-height: 1.4em; margin-top: 0.5rem; letter-spacing: 0.02em;
+}
+@media (max-width: 720px) {
+  .constellation-wrap { padding: 1.25rem 0.75rem 1rem; }
+  .const-node.skill text { font-size: 10.5px; }
+}
+
 .skills-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .skill-group { background: var(--void-2); padding: 1.75rem; }
 .skill-group-label {
@@ -510,7 +586,7 @@ footer span { color: var(--amber); }
 }
 </style>
 </head>
-<body>
+<body data-mode="fs">
 
 <a class="skip-link" href="#about">Skip to content</a>
 <div class="grain-overlay" aria-hidden="true"></div>
@@ -544,11 +620,16 @@ footer span { color: var(--amber); }
     <div class="playhead" id="playhead" aria-hidden="true"></div>
     <button class="track-mark" data-target="#hero" aria-label="Jump to open"><span class="mark-n">00</span><span class="mark-l">Intro</span></button>
     <button class="track-mark" data-target="#about" aria-label="Jump to backstory"><span class="mark-n">01</span><span class="mark-l">About Me</span></button>
-    <button class="track-mark" data-target="#projects" aria-label="Jump to reel"><span class="mark-n">02</span><span class="mark-l">Projects</span></button>
-    <button class="track-mark" data-target="#skills" aria-label="Jump to kit"><span class="mark-n">03</span><span class="mark-l">Skills</span></button>
-    <button class="track-mark" data-target="#certifications" aria-label="Jump to verified"><span class="mark-n">04</span><span class="mark-l">Certs</span></button>
-    <button class="track-mark" data-target="#contact" aria-label="Jump to credits"><span class="mark-n">05</span><span class="mark-l">Contact Me</span></button>
+    <button class="track-mark" data-target="#experience" aria-label="Jump to experience"><span class="mark-n">02</span><span class="mark-l">Experience</span></button>
+    <button class="track-mark" data-target="#projects" aria-label="Jump to reel"><span class="mark-n">03</span><span class="mark-l">Projects</span></button>
+    <button class="track-mark" data-target="#skills" aria-label="Jump to kit"><span class="mark-n">04</span><span class="mark-l">Skills</span></button>
+    <button class="track-mark" data-target="#certifications" aria-label="Jump to verified"><span class="mark-n">05</span><span class="mark-l">Certs</span></button>
+    <button class="track-mark" data-target="#contact" aria-label="Jump to credits"><span class="mark-n">06</span><span class="mark-l">Contact Me</span></button>
   </nav>
+  <div class="mode-switch" role="group" aria-label="Portfolio framing">
+    <button class="mode-btn active" data-mode-btn="fs" aria-pressed="true">Full-Stack</button>
+    <button class="mode-btn" data-mode-btn="qa" aria-pressed="false">QA</button>
+  </div>
   <div class="scrubber-brand-right">SP.Protfolio</div>
 </header>
 
@@ -556,7 +637,8 @@ footer span { color: var(--amber); }
 <section id="hero">
   <div class="hero-bg-vignette"></div>
   <div class="filmstrip-h" aria-hidden="true"><span>THE PORTFOLIO</span></div>
-  <div class="scene-label-v" aria-hidden="true">MERN STACK — PUNE, INDIA</div>
+  <div class="scene-label-v fs-only" aria-hidden="true">MERN STACK — PUNE, INDIA</div>
+  <div class="scene-label-v qa-only" aria-hidden="true">QA &amp; SOFTWARE TESTING — PUNE, INDIA</div>
 
   <div class="hero-content">
     <p class="hero-eyebrow"><span class="hud-dot" aria-hidden="true"></span>Status: open for opportunities</p>
@@ -568,13 +650,18 @@ footer span { color: var(--amber); }
       <div class="hero-role-typed"><span class="prompt">&gt;</span><span id="typed-text"></span><span class="typed-cursor"></span></div>
     </div>
 
-    <p class="hero-desc">
+    <p class="hero-desc fs-only">
       Full-stack developer who builds scalable web applications — from expressive interfaces to airtight REST APIs — using the MERN stack. I care as much about how it feels to use as how it's built.
+    </p>
+    <p class="hero-desc qa-only">
+      QA engineer who thinks like a developer — testing REST APIs, validating full-stack workflows, and hunting down the edge cases that break production. I care about catching the bug before the user ever sees it.
     </p>
 
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">▶ View the projects</a>
-      <a href="Sophia_Pattekari_Resume.pdf" download="Sophia_Pattekari_Resume.pdf" class="btn-ghost"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <a href="Sophia_Pattekari_Resume_Python_MERN.pdf" download="Sophia_Pattekari_Resume_Python_MERN.pdf" class="btn-ghost fs-only"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Resume</a>
+      <a href="Sophia_QA_Resume.pdf" download="Sophia_QA_Resume.pdf" class="btn-ghost qa-only"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Resume</a>
       <a href="#contact" class="btn-ghost">Get in touch</a>
         
@@ -592,8 +679,10 @@ footer span { color: var(--amber); }
 
   <div class="about-layout">
     <div class="about-copy reveal">
-      <p><strong>Sophia Pattekari</strong> — MERN Stack Developer based in Pune, India, currently in the final year of an MCA at M.E.S Institute of Management and Career Courses.</p>
-      <p>I build full-stack applications with clean architecture, secure authentication, and interfaces that stay out of the way — the kind of craft that shows up in the small decisions, not just the big ones.</p>
+      <p class="fs-only"><strong>Sophia Pattekari</strong> — MERN Stack Developer based in Pune, India, currently pursuing an MCA at M.E.S Institute of Management and Career Courses.</p>
+      <p class="fs-only">I build full-stack applications with clean architecture, secure authentication, and interfaces that stay out of the way — the kind of craft that shows up in the small decisions, not just the big ones.</p>
+      <p class="qa-only"><strong>Sophia Pattekari</strong> — QA / Software Tester based in Pune, India, currently pursuing an MCA at M.E.S Institute of Management and Career Courses.</p>
+      <p class="qa-only">I test full-stack applications end-to-end — REST APIs, UI workflows, and database-backed features — with a manual, functional, and regression testing mindset, and foundational Selenium automation. If it can break, I want to find it before your users do.</p>
       <p>Off-screen, I'm usually deep in indie or world cinema — especially Indian regional-language films — which is partly why this page reads like a reel instead of a résumé.</p>
 
       <div class="edu-timeline">
@@ -611,10 +700,41 @@ footer span { color: var(--amber); }
     </div>
 
     <div class="about-right reveal delay-1">
-      <div class="stat-strip"><div class="stat-num">2+</div><div class="stat-text-label">Projects shipped</div></div>
+      <div class="stat-strip"><div class="stat-num">3+</div><div class="stat-text-label">Projects shipped</div></div>
       <div class="stat-strip"><div class="stat-num">5</div><div class="stat-text-label">Certs earned</div></div>
       <div class="stat-strip"><div class="stat-num">10+</div><div class="stat-text-label">Skills in the kit</div></div>
     </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ────────────────────────────────────────── -->
+<section id="experience">
+  <div class="scene-header reveal">
+    <span class="scene-slug">ON THE JOB</span>
+    <div class="scene-title-row"><h2 class="scene-title">Experience</h2><div class="scene-rule"></div></div>
+  </div>
+
+  <div class="exp-card reveal">
+    <div class="exp-head">
+      <div>
+        <div class="exp-role">Full Stack (MERN) Developer Intern</div>
+        <div class="exp-company">Arison Guruteck Solutions, Pune</div>
+      </div>
+      <div class="exp-date">JULY 2026 — PRESENT</div>
+    </div>
+    <ul class="exp-list fs-only">
+      <li>Built core features of the company's e-commerce platform — product listings, shopping cart, checkout flow, and an admin panel — using Next.js, Tailwind CSS, Node.js, and Express.js.</li>
+      <li>Debugged and resolved a CSS cascade conflict caused by an unlayered global reset overriding Tailwind utility classes, restoring consistent styling sitewide.</li>
+      <li>Use AI-assisted development tools (Claude, ChatGPT, Codex, Antigravity) throughout the daily workflow to accelerate implementation, debugging, and code review.</li>
+    </ul>
+    <ul class="exp-list qa-only">
+      <li>Developed and validated full-stack features for e-commerce and ERP applications using Next.js, Node.js, Express.js, MongoDB, and REST APIs.</li>
+      <li>Performed API testing using Postman to verify CRUD operations, authentication, request/response behavior, validation rules, and HTTP status codes.</li>
+      <li>Performed frontend QA across dashboards, tables, forms, filters, routing, and MongoDB-backed data to verify UI-to-API integration.</li>
+      <li>Verified task-management routes, dashboard KPIs, table mappings, search/filter behavior, and real-data integration against backend APIs.</li>
+      <li>Tested business workflows and edge cases across inventory and sales modules, including stock reservation, stock release, order lifecycle transitions, and return quantity validation.</li>
+      <li>Identified and debugged application defects across frontend styling, API integration, and business workflows.</li>
+    </ul>
   </div>
 </section>
 
@@ -645,8 +765,11 @@ footer span { color: var(--amber); }
             </a>
           </div>
         </div>
-        <p class="project-desc">
-          A full-stack blogging platform with AI-assisted content generation, secure JWT authentication, OTP-based email verification, image uploads via Cloudinary, bookmarking, comments, and profile management. Deployed on Vercel + Render.
+        <p class="project-desc fs-only">
+          A full-stack blogging platform with AI-assisted content generation, secure JWT authentication, OTP-based email verification, image uploads via Cloudinary, bookmarking, comments, and profile management. Designed and integrated 15+ REST API endpoints, deployed on Vercel + Render.
+        </p>
+        <p class="project-desc qa-only">
+          Tested and validated 15+ REST API endpoints — authentication, posts, comments, bookmarks, profiles, and AI services — using Postman. Verified JWT auth, OTP verification, password recovery, CRUD operations, and frontend-backend integration across the full blogging platform.
         </p>
         <div class="viewer-panel">
           <div class="viewer-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="viewer-label">auth.middleware.js</span></div>
@@ -689,8 +812,11 @@ footer span { color: var(--amber); }
             </a>
           </div>
         </div>
-        <p class="project-desc">
-          A collaborative digital workspace with real-time drawing synchronization across distributed clients via WebSocket. Features complex React state management for smooth brush strokes and a distraction-free canvas UI.
+        <p class="project-desc fs-only">
+          A collaborative digital workspace for 10+ concurrent users with sub-50ms sync via Socket.io/WebSockets, cutting network overhead over 70% versus HTTP polling. Optimized React state management, cutting unnecessary re-renders by 40% and sustaining 60 FPS during canvas updates.
+        </p>
+        <p class="project-desc qa-only">
+          Tested real-time synchronization and collaborative canvas workflows across 10+ concurrent users over Socket.io/WebSockets. Debugged frontend state-management and rendering issues to maintain smooth, responsive real-time interactions.
         </p>
         <div class="viewer-panel">
           <div class="viewer-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="viewer-label">draw.socket.js</span></div>
@@ -709,6 +835,51 @@ footer span { color: var(--amber); }
         </div>
       </div>
     </div>
+
+    <!-- Grievance Portal -->
+    <div class="project-card reveal delay-2" data-tilt>
+      <div class="project-card-inner">
+        <div class="clip-slate">
+          <span class="slate-take">Project 03</span>
+          <span class="slate-shot">Python · Flask · MySQL</span>
+        </div>
+        <div class="project-meta">
+          <div>
+            <div class="project-name">Digital Complaint &amp; Grievance Portal</div>
+            <div class="project-subtitle fs-only">// Full-stack complaint tracking system</div>
+            <div class="project-subtitle qa-only">// QA-validated complaint tracking system</div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/sophia310/Grievance-Portal" target="_blank" rel="noopener" class="proj-link">
+              <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77A5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <p class="project-desc fs-only">
+          A full-stack Flask web application with role-based authentication for two user types, enabling secure complaint registration, tracking, and resolution. Built RESTful APIs with complete CRUD operations against a normalized MySQL schema.
+        </p>
+        <p class="project-desc qa-only">
+          Validated a role-based Flask application across student and staff workflows — complaint registration, tracking, and resolution. Implemented and tested RESTful APIs and CRUD operations against MySQL, and verified database relationships and data consistency across workflows.
+        </p>
+        <div class="viewer-panel">
+          <div class="viewer-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="viewer-label">routes.py</span></div>
+          <pre class="viewer-code"><code><span class="tok-kw">@app.route</span>(<span class="tok-str">"/complaint/&lt;int:id&gt;"</span>, methods=[<span class="tok-str">"PUT"</span>])
+<span class="tok-kw">@login_required</span>
+<span class="tok-kw">def</span> <span class="tok-fn">update_status</span>(id):
+    complaint = Complaint.query.<span class="tok-fn">get_or_404</span>(id)
+    complaint.status = request.json[<span class="tok-str">"status"</span>]
+    db.session.<span class="tok-fn">commit</span>()
+    <span class="tok-kw">return</span> jsonify(complaint.<span class="tok-fn">to_dict</span>()), <span class="tok-str">200</span></code></pre>
+        </div>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag hi">HTML/CSS/JS</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -719,11 +890,18 @@ footer span { color: var(--amber); }
     <div class="scene-title-row"><h2 class="scene-title">Skills</h2><div class="scene-rule"></div></div>
   </div>
 
-  <div class="skills-layout reveal">
+  <div class="constellation-wrap reveal">
+    <div class="constellation-caption">Click a skill or a project — the constellation lights up how they connect.</div>
+    <svg id="constellationSvg" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Interactive diagram connecting skills to the projects and internship that used them"></svg>
+    <div class="constellation-hint" id="constellationHint">Tap any glowing point to begin.</div>
+  </div>
+
+  <div class="skills-layout reveal fs-only">
     <div class="skill-group">
       <div class="skill-group-label"><span class="idx">01</span>Frontend</div>
       <div class="skill-pills">
         <span class="skill-pill"><i class="devicon-react-original"></i>React.js</span>
+        <span class="skill-pill"><i class="devicon-nextjs-original"></i>Next.js</span>
         <span class="skill-pill"><i class="devicon-javascript-plain"></i>JavaScript ES6+</span>
         <span class="skill-pill"><i class="devicon-html5-plain"></i>HTML5</span>
         <span class="skill-pill"><i class="devicon-css3-plain"></i>CSS3</span>
@@ -732,10 +910,11 @@ footer span { color: var(--amber); }
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-label"><span class="idx">02</span>Backend</div>
+      <div class="skill-group-label"><span class="idx">02</span>Backend &amp; APIs</div>
       <div class="skill-pills">
         <span class="skill-pill"><i class="devicon-nodejs-plain"></i>Node.js</span>
         <span class="skill-pill"><i class="devicon-express-original"></i>Express.js</span>
+        <span class="skill-pill"><i class="devicon-flask-original"></i>Flask</span>
         <span class="skill-pill"><i class="devicon-fastapi-plain"></i>REST APIs</span>
         <span class="skill-pill"><i class="devicon-socketio-original"></i>Socket.io</span>
         <span class="skill-pill"><i class="devicon-oauth-plain"></i>JWT Auth</span>
@@ -745,7 +924,7 @@ footer span { color: var(--amber); }
       <div class="skill-group-label"><span class="idx">03</span>Database</div>
       <div class="skill-pills">
         <span class="skill-pill"><i class="devicon-mongodb-plain"></i>MongoDB</span>
-        <span class="skill-pill"><i class="devicon-mongodb-plain"></i>MongoDB Atlas</span>
+        <span class="skill-pill"><i class="devicon-mongodb-plain"></i>Mongoose</span>
         <span class="skill-pill"><i class="devicon-mysql-plain"></i>MySQL</span>
       </div>
     </div>
@@ -775,6 +954,79 @@ footer span { color: var(--amber); }
         <span class="skill-pill">OOP</span>
         <span class="skill-pill">MVC</span>
         <span class="skill-pill">API Integration</span>
+        <span class="skill-pill">Agile</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="skills-layout reveal qa-only">
+    <div class="skill-group">
+      <div class="skill-group-label"><span class="idx">01</span>Testing</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Manual Testing</span>
+        <span class="skill-pill">Functional Testing</span>
+        <span class="skill-pill">Regression Testing</span>
+        <span class="skill-pill">Integration Testing</span>
+        <span class="skill-pill">API Testing</span>
+        <span class="skill-pill">Test Case Design</span>
+        <span class="skill-pill">Bug Identification &amp; Debugging</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label"><span class="idx">02</span>Automation</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Selenium (Fundamentals)</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label"><span class="idx">03</span>API &amp; Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-postman-plain"></i>Postman</span>
+        <span class="skill-pill"><i class="devicon-fastapi-plain"></i>REST APIs</span>
+        <span class="skill-pill"><i class="devicon-git-plain"></i>Git &amp; GitHub</span>
+        <span class="skill-pill"><i class="devicon-jira-plain"></i>Jira</span>
+        <span class="skill-pill"><i class="devicon-vscode-plain"></i>VS Code</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label"><span class="idx">04</span>Languages</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-python-plain"></i>Python</span>
+        <span class="skill-pill"><i class="devicon-javascript-plain"></i>JavaScript ES6+</span>
+        <span class="skill-pill"><i class="devicon-java-plain"></i>Java</span>
+        <span class="skill-pill">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label"><span class="idx">05</span>Databases</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-mysql-plain"></i>MySQL</span>
+        <span class="skill-pill"><i class="devicon-mongodb-plain"></i>MongoDB</span>
+        <span class="skill-pill"><i class="devicon-mongodb-plain"></i>Mongoose</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label"><span class="idx">06</span>Development</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-react-original"></i>React.js</span>
+        <span class="skill-pill"><i class="devicon-nextjs-original"></i>Next.js</span>
+        <span class="skill-pill"><i class="devicon-nodejs-plain"></i>Node.js</span>
+        <span class="skill-pill"><i class="devicon-express-original"></i>Express.js</span>
+        <span class="skill-pill"><i class="devicon-flask-original"></i>Flask</span>
+        <span class="skill-pill"><i class="devicon-html5-plain"></i>HTML5</span>
+        <span class="skill-pill"><i class="devicon-css3-plain"></i>CSS3</span>
+        <span class="skill-pill"><i class="devicon-tailwindcss-plain"></i>Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label"><span class="idx">07</span>Concepts</div>
+      <div class="skill-pills">
+        <span class="skill-pill">SDLC</span>
+        <span class="skill-pill">STLC</span>
+        <span class="skill-pill">OOP</span>
+        <span class="skill-pill">DSA</span>
+        <span class="skill-pill">MVC</span>
+        <span class="skill-pill">Agile</span>
       </div>
     </div>
   </div>
@@ -865,37 +1117,246 @@ footer span { color: var(--amber); }
 </section>
 
 <footer>
-  <p>Directed &amp; built by <span>Sophia Pattekari</span> &nbsp;·&nbsp; MERN Stack Developer &nbsp;·&nbsp; Pune, India &nbsp;·&nbsp; end of portfolio</p>
+  <p>Directed &amp; built by <span>Sophia Pattekari</span> &nbsp;·&nbsp; <span class="fs-only">MERN Stack Developer</span><span class="qa-only">QA / Software Tester</span> &nbsp;·&nbsp; Pune, India &nbsp;·&nbsp; end of portfolio</p>
 </footer>
 
 <script>
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ── TYPING ANIMATION (terminal role line) ── */
-const phrases = [
-  'const role = "MERN Stack Developer";',
-  'const role = "React.js Engineer";',
-  'const role = "API Architect";',
-  'const role = "Frame-by-frame problem solver";',
-];
+/* ── MODE SWITCH (Full-Stack / QA) ── */
+const PHRASES = {
+  fs: [
+    'const role = "MERN Stack Developer";',
+    'const role = "React.js Engineer";',
+    'const role = "API Architect";',
+    'const role = "Frame-by-frame problem solver";',
+  ],
+  qa: [
+    'const role = "QA / Software Tester";',
+    'const role = "API Test Specialist";',
+    'const role = "Bug Hunter";',
+    'const role = "Frame-by-frame problem solver";',
+  ],
+};
+const META = {
+  fs: { title: 'Sophia Pattekari — MERN Stack Developer', desc: 'Sophia Pattekari — MERN Stack Developer portfolio, Pune, India.' },
+  qa: { title: 'Sophia Pattekari — QA / Software Tester', desc: 'Sophia Pattekari — QA / Software Tester portfolio, Pune, India.' },
+};
+
+let phrases = PHRASES.fs;
 const typedEl = document.getElementById('typed-text');
-let phraseIdx = 0, charIdx = 0, deleting = false;
+let phraseIdx = 0, charIdx = 0, deleting = false, typeTimer = null;
 
 function type() {
-  const current = phrases[phraseIdx];
+  const current = phrases[phraseIdx % phrases.length];
   if (!deleting) {
     typedEl.textContent = current.slice(0, ++charIdx);
-    if (charIdx === current.length) { deleting = true; setTimeout(type, 1800); return; }
-    setTimeout(type, 55);
+    if (charIdx === current.length) { deleting = true; typeTimer = setTimeout(type, 1800); return; }
+    typeTimer = setTimeout(type, 55);
   } else {
     typedEl.textContent = current.slice(0, --charIdx);
-    if (charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; setTimeout(type, 350); return; }
-    setTimeout(type, 28);
+    if (charIdx === 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; typeTimer = setTimeout(type, 350); return; }
+    typeTimer = setTimeout(type, 28);
   }
 }
-setTimeout(type, reducedMotion ? 0 : 2600);
 
-/* ── SCROLL REVEAL (+ code panel scan trigger) ── */
+function setMode(mode, opts) {
+  opts = opts || {};
+  if (mode !== 'fs' && mode !== 'qa') mode = 'fs';
+  document.body.dataset.mode = mode;
+  document.getElementById('pageTitle').textContent = META[mode].title;
+  document.getElementById('metaDesc').setAttribute('content', META[mode].desc);
+  document.querySelectorAll('.mode-btn').forEach(b => {
+    const isActive = b.dataset.modeBtn === mode;
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+  // (re)start the typed-role animation with this mode's phrases
+  phrases = PHRASES[mode];
+  phraseIdx = 0; charIdx = 0; deleting = false;
+  if (typeTimer) clearTimeout(typeTimer);
+  typedEl.textContent = '';
+  const delay = opts.initial ? (reducedMotion ? 0 : 2600) : 200;
+  typeTimer = setTimeout(type, delay);
+  // make sure any newly-shown mode-specific content is visible (skip scroll-reveal wait)
+  document.querySelectorAll('.fs-only.reveal, .qa-only.reveal').forEach(el => el.classList.add('visible'));
+  if (typeof renderConstellation === 'function') renderConstellation(mode);
+  try { localStorage.setItem('sp-portfolio-mode', mode); } catch (e) {}
+}
+
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => setMode(btn.dataset.modeBtn));
+});
+
+/* ── SKILL CONSTELLATION ── */
+const CONST_PROJECTS = ['Lumina', 'CollabBoard', 'Grievance Portal', 'Internship'];
+const CONST_DATA = {
+  fs: [
+    { id: 'react',    label: 'React.js',      projects: [0, 1] },
+    { id: 'nextjs',   label: 'Next.js',       projects: [3] },
+    { id: 'node',     label: 'Node.js',       projects: [0, 1, 3] },
+    { id: 'express',  label: 'Express.js',    projects: [0, 1, 3] },
+    { id: 'mongodb',  label: 'MongoDB',       projects: [0, 1, 3] },
+    { id: 'mysql',    label: 'MySQL',         projects: [2] },
+    { id: 'socketio', label: 'Socket.io',     projects: [1] },
+    { id: 'jwt',      label: 'JWT Auth',      projects: [0] },
+    { id: 'restapi',  label: 'REST APIs',     projects: [0, 2, 3] },
+    { id: 'flask',    label: 'Flask',         projects: [2] },
+    { id: 'python',   label: 'Python',        projects: [2] },
+    { id: 'tailwind', label: 'Tailwind CSS',  projects: [3] },
+  ],
+  qa: [
+    { id: 'apitest',     label: 'API Testing',           projects: [0, 2, 3] },
+    { id: 'postman',     label: 'Postman',                projects: [0, 3] },
+    { id: 'manual',      label: 'Manual Testing',         projects: [0, 1, 2, 3] },
+    { id: 'regression',  label: 'Regression Testing',     projects: [3] },
+    { id: 'functional',  label: 'Functional Testing',     projects: [0, 2, 3] },
+    { id: 'integration', label: 'Integration Testing',    projects: [2, 3] },
+    { id: 'bugid',       label: 'Bug ID & Debugging',     projects: [1, 3] },
+    { id: 'testcase',    label: 'Test Case Design',       projects: [3] },
+    { id: 'restapiqa',   label: 'REST APIs',              projects: [0, 2, 3] },
+    { id: 'mysqlqa',     label: 'MySQL',                  projects: [2] },
+    { id: 'mongodbqa',   label: 'MongoDB',                projects: [0, 1, 3] },
+    { id: 'selenium',    label: 'Selenium',               projects: [] },
+  ],
+};
+
+const SVGNS = 'http://www.w3.org/2000/svg';
+const constSvg = document.getElementById('constellationSvg');
+const constHint = document.getElementById('constellationHint');
+let constSelected = null;
+
+function svgEl(tag, attrs) {
+  const el = document.createElementNS(SVGNS, tag);
+  for (const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+
+function renderConstellation(mode) {
+  const skills = CONST_DATA[mode] || CONST_DATA.fs;
+  constSvg.innerHTML = '';
+  constSelected = null;
+  constHint.textContent = 'Tap any glowing point to begin.';
+
+  const W = 800, H = 520, cx = 400, cy = 268;
+  const rProject = 92, rSkill = 222;
+  const projDotR = 15, skillDotR = 7;
+
+  function pos(i, n, r) {
+    const angle = (-90 + (360 / n) * i) * Math.PI / 180;
+    return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle), ax: Math.cos(angle), ay: Math.sin(angle) };
+  }
+
+  const projectPos = CONST_PROJECTS.map((_, i) => pos(i, CONST_PROJECTS.length, rProject));
+  const skillPos = skills.map((_, i) => pos(i, skills.length, rSkill));
+
+  const lineLayer = svgEl('g', { class: 'lines' });
+  const nodeLayer = svgEl('g', { class: 'nodes' });
+  constSvg.appendChild(lineLayer);
+  constSvg.appendChild(nodeLayer);
+
+  // lines: skill -> each connected project
+  skills.forEach((skill, si) => {
+    skill.projects.forEach(pi => {
+      const a = skillPos[si], b = projectPos[pi];
+      const line = svgEl('line', {
+        x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+        class: 'const-line',
+        'data-skill': skill.id, 'data-project': pi,
+      });
+      lineLayer.appendChild(line);
+    });
+  });
+
+  function labelOffset(p, dotR) {
+    if (Math.abs(p.ax) < 0.35) {
+      return { anchor: 'middle', dx: 0, dy: p.ay < 0 ? -(dotR + 12) : (dotR + 20) };
+    }
+    return { anchor: p.ax > 0 ? 'start' : 'end', dx: p.ax > 0 ? dotR + 8 : -(dotR + 8), dy: 4 };
+  }
+
+  // project nodes
+  projectPos.forEach((p, i) => {
+    const off = labelOffset(p, projDotR);
+    const g = svgEl('g', {
+      class: 'const-node project', tabindex: '0', role: 'button',
+      'aria-label': CONST_PROJECTS[i], 'data-project': i,
+    });
+    g.appendChild(svgEl('circle', { cx: p.x, cy: p.y, r: projDotR }));
+    const t = svgEl('text', { x: p.x + off.dx, y: p.y + off.dy, 'text-anchor': off.anchor });
+    t.textContent = CONST_PROJECTS[i];
+    g.appendChild(t);
+    nodeLayer.appendChild(g);
+    g.addEventListener('click', () => selectConst('project', i));
+    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectConst('project', i); } });
+  });
+
+  // skill nodes
+  skillPos.forEach((p, i) => {
+    const skill = skills[i];
+    const off = labelOffset(p, skillDotR);
+    const g = svgEl('g', {
+      class: 'const-node skill', tabindex: '0', role: 'button',
+      'aria-label': skill.label, 'data-skill': skill.id,
+    });
+    g.appendChild(svgEl('circle', { cx: p.x, cy: p.y, r: skillDotR }));
+    const t = svgEl('text', { x: p.x + off.dx, y: p.y + off.dy, 'text-anchor': off.anchor });
+    t.textContent = skill.label;
+    g.appendChild(t);
+    nodeLayer.appendChild(g);
+    g.addEventListener('click', () => selectConst('skill', skill.id));
+    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectConst('skill', skill.id); } });
+  });
+
+  function selectConst(type, key) {
+    const sameSelection = constSelected && constSelected.type === type && constSelected.key === key;
+    const allNodes = nodeLayer.querySelectorAll('.const-node');
+    const allLines = lineLayer.querySelectorAll('.const-line');
+    allNodes.forEach(n => n.classList.remove('active', 'dim'));
+    allLines.forEach(l => l.classList.remove('active', 'dim'));
+
+    if (sameSelection) {
+      constSelected = null;
+      constHint.textContent = 'Tap any glowing point to begin.';
+      return;
+    }
+    constSelected = { type, key };
+
+    if (type === 'project') {
+      const related = skills.filter(s => s.projects.includes(key)).map(s => s.id);
+      allNodes.forEach(n => {
+        const isProject = n.classList.contains('project') && Number(n.dataset.project) === key;
+        const isSkill = n.classList.contains('skill') && related.includes(n.dataset.skill);
+        n.classList.add(isProject || isSkill ? 'active' : 'dim');
+      });
+      allLines.forEach(l => {
+        l.classList.add(Number(l.dataset.project) === key ? 'active' : 'dim');
+      });
+      constHint.textContent = related.length
+        ? `${CONST_PROJECTS[key]} draws on: ${related.map(id => skills.find(s => s.id === id).label).join(', ')}`
+        : `${CONST_PROJECTS[key]} — no linked skills yet.`;
+    } else {
+      const skill = skills.find(s => s.id === key);
+      allNodes.forEach(n => {
+        const isSkill = n.classList.contains('skill') && n.dataset.skill === key;
+        const isProject = n.classList.contains('project') && skill.projects.includes(Number(n.dataset.project));
+        n.classList.add(isSkill || isProject ? 'active' : 'dim');
+      });
+      allLines.forEach(l => {
+        l.classList.add(l.dataset.skill === key ? 'active' : 'dim');
+      });
+      constHint.textContent = skill.projects.length
+        ? `${skill.label} shows up in: ${skill.projects.map(pi => CONST_PROJECTS[pi]).join(', ')}`
+        : `${skill.label} — a skill I'm building toward my next project.`;
+    }
+  }
+}
+
+(function initMode() {
+  let saved = null;
+  try { saved = localStorage.getItem('sp-portfolio-mode'); } catch (e) {}
+  setMode(saved === 'qa' ? 'qa' : 'fs', { initial: true });
+})();
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
